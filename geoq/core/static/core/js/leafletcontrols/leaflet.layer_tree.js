@@ -40,20 +40,43 @@ leaflet_layer_control.initDrawer = function(){
         .attr('id','layer-control-accordion')
         .appendTo($drawer);
 
-    //Build the first row of the accordion if workcell info exists
-    leaflet_layer_control.addWorkCellInfo($accordion);
 
-    //Build the next row of the accordion with details about a selected feature
-    leaflet_layer_control.addFeatureInfo($accordion);
+    // Take on accordion control by Editor (No need to make changes to the settings in the database, but still respects the settings.)
+    if (aoi_feature_edit.editor == "geoq") {
+        leaflet_layer_control.addWorkCellInfo($accordion);
 
-    //Build an accordion row to view workcell log
-    leaflet_layer_control.addLogInfo($accordion);
-    leaflet_layer_control.addLayerComparison($accordion);
-    leaflet_layer_control.addGeoOverview($accordion);
-    leaflet_layer_control.addRotationHelper($accordion);
-    leaflet_layer_control.addYouTube($accordion);
+        //Build the next row of the accordion with details about a selected feature
+        leaflet_layer_control.addFeatureInfo($accordion);
+    
+        //Build an accordion row to view workcell log
+        leaflet_layer_control.addLogInfo($accordion);
+        leaflet_layer_control.addLayerComparison($accordion);
+        leaflet_layer_control.addGeoOverview($accordion);
+        leaflet_layer_control.addRotationHelper($accordion);
+        leaflet_layer_control.addYouTube($accordion);
+    } else if (aoi_feature_edit.editor == "osm"){
+        leaflet_layer_control.addWorkCellInfo($accordion);
 
+        //Build the next row of the accordion with details about a selected feature
+        leaflet_layer_control.addFeatureInfo($accordion);
+    
+        //Build an accordion row to view workcell log
+        leaflet_layer_control.addLogInfo($accordion);
+        leaflet_layer_control.addLayerComparison($accordion);
+        leaflet_layer_control.addGeoOverview($accordion);
+        leaflet_layer_control.addRotationHelper($accordion);
+        leaflet_layer_control.addYouTube($accordion);
 
+    } else if (aoi_feature_edit.editor == "exploiter"){
+        //Put Exploiter layers here
+        // List of Images
+        // Geospacial Layers
+        leaflet_layer_control.addGeoOverview($accordion)
+        // OLS interface
+        leaflet_layer_control.addOLSHelper($accordion)
+    } else if (aoi_feature_edit.editor == "ols") {
+        //Put OLS layers here
+    }
     //The Layer Controls should also be built and added later in another script, something like:
     // var options = aoi_feature_edit.buildTreeLayers();
     // leaflet_layer_control.addLayerControl(map, options, $accordion);
@@ -139,13 +162,18 @@ leaflet_layer_control.addRotationHelper = function($accordion) {
 };
 
 
+leaflet_layer_control.addOLSHelper = function ($accordion) {
+    var OLS = leaflet_layer_control.buildAccordionPanel($accordion, "OLS Wizard")
+}
+
 
 
 leaflet_layer_control.addYouTube = function ($accordion) {
 	/*
 		Add html to accordion and bind accordion to the panel
 	*/
-	var yt = leaflet_layer_control.buildAccordionPanel($accordion, "YouTube");
+    var yt = leaflet_layer_control.buildAccordionPanel($accordion, "YouTube");
+    console.log("from youtube: " + aoi_feature_edit.editor);
     //The youtube image is to preload the logo, without this it will not show up right away when you first click the popup.
 	var ytHTML = '<div>' +
             '<img id="youTube" src="/static/images/YouTube.png" alt="Play Video" style="display:none"><iframe id="youTubeIframe" width="230px" height="200" style="display:none" src="" allowfullscreen></iframe>' + 
@@ -153,7 +181,8 @@ leaflet_layer_control.addYouTube = function ($accordion) {
 			'Keywords: <input id="keyword" type="text" name="keyword" value="" placeholder="eg: Flood, Crash..."><br>' +
 			'Start Date: <input id="startDate" type="text" name="startDate" value="" placeholder="mm-dd-yyyy" style="margin-right:20px"><br>' +
 			'End Date: <input id="endDate" type="text" name="endDate" value="" placeholder="mm-dd-yyyy"><br>' +
-			'<input type="submit" value="Submit" style="margin-right:20px"><input id="clearButton" type="button" value="Clear" style="visibility:hidden"></form></div>';
+            '<input type="submit" value="Submit" style="margin-right:20px"><input id="clearButton" type="button" value="Clear" style="visibility:hidden"></form></div>' +
+            "";
 
 	var ytdom = $(ytHTML);
 

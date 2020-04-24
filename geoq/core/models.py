@@ -167,7 +167,7 @@ class Job(GeoQBase, Assignment):
 
     GRID_SERVICE_VALUES = ['usng', 'mgrs']
     GRID_SERVICE_CHOICES = [(choice, choice) for choice in GRID_SERVICE_VALUES]
-    EDITORS = ['geoq','osm']
+    EDITORS = ['geoq','osm', 'exploiter', 'ols']
     EDITOR_CHOICES = [(choice, choice) for choice in EDITORS]
 
     analysts = models.ManyToManyField(User, blank=True, related_name="analysts")

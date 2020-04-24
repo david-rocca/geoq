@@ -68,7 +68,8 @@
 
         leaflet_helper.proxy_path = "{% url 'proxy' %}" + "/"; //TODO: Standardize expression of proxy locations
         leaflet_helper.home_url = "{% url 'home' %}";
-
+        console.log("Current Editor loaded is: " + "{{ object.job.editor }}")
+        aoi_feature_edit.editor = "{{ object.job.editor }}"
         aoi_feature_edit.feature_types = [];
         {% for feature_type in feature_types %}
             aoi_feature_edit.feature_types[{{ feature_type.id }}] = {{ feature_type.to_json|safe }};

@@ -313,6 +313,10 @@ class CreateFeaturesView(UserAllowedMixin, DetailView):
         cv['reviewers'] = kwargs['object'].job.reviewers.all()
         cv['admin'] = self.request.user.is_superuser or self.request.user.groups.filter(name='admin_group').count() > 0
 
+        #Editor Logic
+        if self.object.job.editor:
+            cv['editor'] = self.object.job.editor
+
         if self.object.job.map:
             cv['map'] = self.object.job.map
         else:
