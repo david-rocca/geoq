@@ -20,7 +20,10 @@ jobs:
     - name: pre-repo 
       run: |
         cd geoq
-        git reset --hard dr_create_additional_editors
+        git fetch
+        git checkout dr_create_additional_editors 
+        git reset --hard origin/dr_create_additional_editors
+        docker build .
         docker restart geoq_web_1
 
     # Runs a single command using the runners shell
