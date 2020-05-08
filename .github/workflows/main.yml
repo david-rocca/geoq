@@ -16,9 +16,14 @@ jobs:
     runs-on: [self-hosted]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
-    - name: Git checkout
-      run: git reset --hard dr_create_additional_editors
+    
+    - name: pre-repo 
+      run: |
+        rm -rf geoq
+        git clone https://github.com/david-rocca/geoq.git
+        cd geoq
+        git checkout dr_create_additional_editors
+        git reset --hard dr_create_additional_editors
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
