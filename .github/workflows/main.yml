@@ -18,7 +18,7 @@ jobs:
     steps:
 
     - name: Git checkout
-      run: git clone https://github.com/david-rocca/geoq.git
+      run: git reset --hard dr_create_additional_editors
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
