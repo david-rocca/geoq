@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: GeoQ CI
+name: GeoQ CI -
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ dr_create_additional_editors ]
+    branches: [ develop ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -16,10 +16,11 @@ jobs:
     runs-on: [self-hosted]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+
+    - name: Git checkout
+      run: git clone https://github.com/david-rocca/geoq.git
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: docker-compose up --build -d
+      run: echo "hello world"
     
