@@ -72,13 +72,8 @@ leaflet_layer_control.initDrawer = function(){
         // List of Images
         // Geospacial Layers
         leaflet_layer_control.addGeoOverview($accordion)
-        console.log(
-            "DROCCA TEST"
-        )
-        // OLS interface
+    
         leaflet_layer_control.addOLSHelper($accordion)
-        // Quick test
-        leaflet_layer_control.addYouTube($accordion)
     } else if (aoi_feature_edit.editor == "ols") {
         //Put OLS layers here
     }
