@@ -12,7 +12,7 @@ services:
     image: centos7
     build: .
     environment:
-      ALLOWED_HOST: 'localhost'
+      ALLOWED_HOST: 'geoq-testing'
     volumes:
       - /home/drocca/actions-runner/_work/geoq/geoq:/usr/src/geoq
     ports:
