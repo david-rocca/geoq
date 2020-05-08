@@ -6,7 +6,7 @@ name: GeoQ CI -
 # events but only for the master branch
 on:
   push:
-    branches: [ develop ]
+    branches: [ dr_create_additional_editors ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
