@@ -5,7 +5,7 @@ ARG http_proxy
 ARG https_proxy
 ENV http_proxy $http_proxy
 ENV https_proxy $https_proxy
-ENV ALLOWED_HOST localhost
+ENV ALLOWED_HOST geoq-testing
 
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install python-gdbm python-tk
