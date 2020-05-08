@@ -14,7 +14,7 @@ services:
     environment:
       ALLOWED_HOST: 'localhost'
     volumes:
-      - /work/drms/git/geoq_local:/usr/src/geoq
+      - /home/drocca/actions-runner/_work/geoq/geoq:/usr/src/geoq
     ports:
       - "8000:8000"
     command: sh -c 'python app.py'

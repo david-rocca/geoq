@@ -28,8 +28,6 @@ RUN chmod 777 /var/www/static/kml
 EXPOSE 8000
 
 COPY ./docker-entrypoint.sh /
-COPY ./wait-for /
 
-run ls -la
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
