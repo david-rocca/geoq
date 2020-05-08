@@ -19,11 +19,9 @@ jobs:
     
     - name: pre-repo 
       run: |
-        rm -rf geoq
-        git clone https://github.com/david-rocca/geoq.git
         cd geoq
-        git checkout dr_create_additional_editors
         git reset --hard dr_create_additional_editors
+        docker restart geoq_web_1
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
